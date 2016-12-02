@@ -1,1 +1,1 @@
-say {m:g/\(/ - m:g/\)/}(slurp)
+dd {m:g/\(/ - m:g/\)/}(slurp)
