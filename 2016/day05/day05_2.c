@@ -17,17 +17,16 @@ int main()
 	while (x < PASSWORD_LENGTH) {
 		sprintf(input, INPUT "%lu", i++);
 		MD5(input, strlen(input), result);
+		if (*(uint32_t *)result & 0xf0ffff)
+			continue;
 		for (j = 0; j < MD5_DIGEST_LENGTH; ++j)
 			sprintf(&input[j*2], "%02x", result[j]);
-		if (__builtin_expect(!strncmp(input, "00000", 5), 0)) {
-			strncpy(tmp, &input[5], 1);
-			c = strtol(tmp, NULL, 16);
-			if (c > 7 || password[c])
-				continue;
-			password[c] = input[6];
-			++x;
-		}
-		
+		strncpy(tmp, &input[5], 1);
+		c = strtol(tmp, NULL, 16);
+		if (c > 7 || password[c])
+			continue;
+		password[c] = input[6];
+		++x;
 	}
 	printf("%s\n", password);
 }
