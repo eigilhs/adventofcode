@@ -1,1 +1,1 @@
-say [~] ([Z] lines».comb)».Bag».pairs».sort(*.value)»[*-1]».key
+say [~] ([Z] lines».comb)».Bag».invert».sort»[*-1]».value
