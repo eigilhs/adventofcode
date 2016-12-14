@@ -1,10 +1,12 @@
-say ".text";
-say ".global main";
-say "main:";
-say "\txor %rax, %rax";
-say "\txor %rbx, %rbx";
-say "\txor %rcx, %rcx";
-say "\txor %rdx, %rdx";
+say Q:to/END/;
+.text
+.globl main
+main:
+	xor %rax, %rax
+	xor %rbx, %rbx
+	xor %rcx, %rcx
+	xor %rdx, %rdx
+END
 
 my $i = 0;
 
@@ -33,11 +35,12 @@ for (lines) {
     }
 }
 
-say "\tmov %rax, %rsi";
-say "\tmov \$fmt, %rdi";
-say "\txor %rax, %rax";
-say "\tcall printf";
-
-say "\txor %rax, %rax";
-say "\tret";
-say 'fmt: .asciz "%d\n"';
+say Q:to/END/
+	mov %rax, %rsi
+	mov $fmt, %rdi
+	xor %rax, %rax
+	call printf
+	xor %rax, %rax
+	ret
+fmt:	.asciz "%d\n"
+END

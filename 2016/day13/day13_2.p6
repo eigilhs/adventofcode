@@ -2,9 +2,8 @@ sub clear($x, $y) {
     (1358 + $x² + 3*$x + 2*$x*$y + $y + $y²).base(2).comb.sum %% 2
 }
 
-my $start = 1+i;
-my @q = [$start];
-my %visited = $start => True;
+my @q = 1+i;
+my %visited = @q.head => True;
 
 sub neighbors($node) {
     $node «+« <1i -1i 1 -1>
