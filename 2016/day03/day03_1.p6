@@ -1,1 +1,1 @@
-say [+] slurp.comb(/\d+/)».Int.rotor(3)».sort.flat.map(* + * > *)
+say [+] slurp.words.rotor(3)».sort(+*).flat.map(* + * > *)
