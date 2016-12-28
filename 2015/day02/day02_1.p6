@@ -1,1 +1,1 @@
-dd [+] ({@_.sum * 2 + min(@_)}($_ Z* $_.rotate) for lines».split('x')».Int».sort)
+say [+] ({@_.sum * 2 + @_[0]}($_ Z* .rotate) for lines».split('x')».sort(+*))

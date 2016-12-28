@@ -1,1 +1,1 @@
-say [+] slurp.words.rotor(3)».sort(+*).flat.map(* + * > *)
+say [+] lines».words».sort(+*).flat.map(* + * > *)

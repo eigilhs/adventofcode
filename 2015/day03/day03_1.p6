@@ -1,1 +1,1 @@
-dd 1 + ([0i] «+=« ('<', -1, '>', 1, 'v', -i, '^', i).hash{slurp.comb} X=> 1).hash
+say 1 + ([0i] «+=« %(qw{< -1 > 1 v -1i ^ 1i}){slurp.comb}).Set
