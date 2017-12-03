@@ -1,1 +1,1 @@
-say [+] lines».words.map({[/] .combinations(2)».sort(-*).grep({[%%] .cache}).flat})
+say [+] lines.map: { [/] .words.sort(-*).combinations(2).first({ [%%] $_ }) }
