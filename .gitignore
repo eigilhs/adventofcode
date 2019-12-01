@@ -1,5 +1,8 @@
 nimcache/
+zig-cache/
 */day*/day*
 !day*.*
+day*.o
 */day*/part*/part*
 !part*.*
+part*.o
