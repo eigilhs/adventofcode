@@ -13,26 +13,31 @@ pub fn main() !void {
     const nums = al.items;
 
     const part1 = for (nums[25..]) |n, i| {
-        if (!twosum(nums[i .. i + 25], n)) break n;
+        if (!twoSum(nums[i .. i + 25], n)) break n;
     } else unreachable;
 
-    const part2 = outer: for (nums) |n, i| {
-        var sum = n;
-        var min = n;
-        var max = n;
-        for (nums[i + 1 ..]) |m| {
-            if (m < min) min = m;
-            if (m > max) max = m;
-            sum += m;
-            if (sum == part1)
-                break :outer min + max;
-        }
-    } else unreachable;
+    var i: usize = 0;
+    var j = i + 1;
+    var sum = nums[i] + nums[j];
+    while (sum != part1) if (sum > part1) {
+        sum -= nums[i];
+        i += 1;
+    } else {
+        j += 1;
+        sum += nums[j];
+    };
 
-    try stdout.print("Part 1: {}\nPart2: {}\n", .{ part1, part2 });
+    var max = nums[j];
+    var min = max;
+    for (nums[i..j]) |n| {
+        if (n < min) min = n;
+        if (n > max) max = n;
+    }
+
+    try stdout.print("Part 1: {}\nPart 2: {}\n", .{ part1, min + max });
 }
 
-fn twosum(nums: []u64, target: u64) bool {
+fn twoSum(nums: []u64, target: u64) bool {
     for (nums) |n, i|
         for (nums[i + 1 ..]) |m|
             if (n + m == target)
