@@ -5,7 +5,7 @@ say @ranges.sort.reduce(-> $a, $b {
     when $b ~~ $a { $a }
     when $a.max >= $b.min { $a.min..$b.max }
     default {
-	$n += $a.elems;
-	$b
+        $n += $a.elems;
+        $b
     }
 }).elems + $n;
